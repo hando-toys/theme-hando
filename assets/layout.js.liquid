@@ -1,0 +1,17 @@
+$(document).ready(function(){
+	resizeDiv();
+
+	$('.toggle--header__drawer').click(function(){
+		$(this).toggleClass('active');
+		$('.header__drawer').toggleClass('visible');
+	});
+});
+
+window.onresize = function(event) {
+	resizeDiv();
+}
+
+function resizeDiv() {
+	vph = $(window).height();
+	$('.height--fixed').height(vph);
+}

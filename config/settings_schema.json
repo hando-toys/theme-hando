@@ -135,6 +135,23 @@
     ]
   },
   {
+    "name": "Hero",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero"
+      },
+      {
+        "type": "image",
+        "id": "hero.jpg",
+        "label": "Homepage Hero",
+        "max-width": 2400,
+        "max-height": 2400,
+        "info": "2400 x 2400px .jpg"
+      }
+    ]
+  },
+  {
     "name": "Footer",
     "settings": [
       {
@@ -193,6 +210,18 @@
         "id": "social_twitter_link",
         "label": "Twitter URL",
         "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram URL",
+        "info": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest URL",
+        "info": "https:\/\/pinterest.com\/shopify"
       },
       {
         "type": "text",

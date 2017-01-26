@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Atlas Grotesk';
+    src: url("{{ '{{ 'atlasgrotesk-bold.eot' | asset_url }}' | asset_url }}");
+    src: url("{{ '{{ 'atlasgrotesk-bold.eot' | asset_url }}?#iefix") format("embedded-opentype"), url("{{ 'atlasgrotesk-bold.woff' | asset_url }}") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+}
+@font-face {
+    font-family: 'Atlas Grotesk';
+    src: url("{{ 'atlasgrotesk-regular.eot' | asset_url }}");
+    src: url("{{ 'atlasgrotesk-regular.eot' | asset_url }}?#iefix") format("embedded-opentype"), url("{{ 'atlasgrotesk-regular.woff' | asset_url }}") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+@font-face {
+    font-family: 'Atlas Grotesk';
+    src: url("{{ 'atlasgrotesk-light.eot' | asset_url }}");
+    src: url("{{ 'atlasgrotesk-light.eot' | asset_url }}?#iefix") format("embedded-opentype"), url("{{ 'atlasgrotesk-light.woff' | asset_url }}") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+body {
+    background-color: violet;
+}
+
+.hando__logo {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header {
+    background-color: violet !important;
+    display: block;
+    height: $height--header;
+    padding: ($gutter / 2) 0;
+    position: relative;
+    width: $full;
+
+    
+
+    .header__menu {
+        background-color: green;
+        height: $base*2;
+        width: 25%;
+    }
+    .header__logo {
+        background-color: violet;
+    }
+}

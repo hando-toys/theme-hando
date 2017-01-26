@@ -1,14 +1,5 @@
-<!-- /templates/collection.liquid -->
-{% comment %}
-
-  For more information on collection tags:
-    - http://docs.shopify.com/themes/liquid-variables/collection
-
-{% endcomment %}
-
 {% paginate collection.products by 12 %}
 
-{% include 'breadcrumb' %}
 
 {% comment %}
   Use .grid--rev so that the collection tags appear below the products on mobile
@@ -47,10 +38,6 @@
     {% endcomment %}
     <div class="grid-uniform">
 
-      {% comment %}
-        Loop through our products in the current collection.
-        See the snippet 'product-grid-item' for the layout.
-      {% endcomment %}
       {% for product in collection.products %}
 
         {% include 'product-grid-item' %}
@@ -84,16 +71,11 @@
     </div>
 
     {% if paginate.pages > 1 %}
-      <hr>
       <div class="pagination">
         {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
       </div>
     {% endif %}
 
-  </div>
-
-  <div class="grid__item large--one-quarter">
-    {% include 'collection-sidebar' %}
   </div>
 </div>
 
