@@ -53,41 +53,22 @@
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
   <div id="NavDrawer" class="drawer drawer--left">
-      <div class="drawer__title h3">{{ 'layout.drawers.browse' | t }}</div>
-      <div class="drawer__close js-drawer-close">
-        <button type="button" class="icon-fallback-text">
-          <span class="icon icon-x" aria-hidden="true"></span>
-          <span class="fallback-text">{{ 'layout.drawers.close_menu' | t }}</span>
-        </button>
-      </div>
-
-      <h4>Shop</h4>
-      <ul class="list list--collections">
-        {% for collection in collections %}
-        <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
-        {% endfor %}
-      </ul>
-      <ul class="drawer__menu drawer__menu--bottom list">
-        {% for link in linklists.footer.links %}
-        <li><a href="{{ link.url }}" class="h4">{{ link.title }}</a></li>
-        {% endfor %}
-        {% for link in linklists.footer-contact.links %}
-        <li><a href="{{ link.url }}" class="h4">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
+    <a href="/collections/all" class="drawer__label h4">Shop</a>
+    <ul class="list drawer__menu--collections">
+      {% for collection in collections %}
+      <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <ul class="drawer__menu drawer__menu--bottom list">
+      {% for link in linklists.mobile-sidebar.links %}
+      <li><a href="{{ link.url }}" class="h4">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
   </div>
 
   {% if settings.ajax_cart_method == "drawer" %}
     <div id="CartDrawer" class="drawer drawer--right">
-      <div class="drawer__header">
-        <div class="drawer__title h3">{{ 'cart.general.title' | t }}</div>
-        <div class="drawer__close js-drawer-close">
-          <button type="button" class="icon-fallback-text">
-            <span class="icon icon-x" aria-hidden="true"></span>
-            <span class="fallback-text">{{ 'cart.general.close_cart' | t | json }}</span>
-          </button>
-        </div>
-      </div>
+      <a href="#" class="drawer__label h4 js-drawer-close">Cart</a>
       <div id="CartContainer"></div>
     </div>
   {% endif %}
@@ -112,7 +93,9 @@
 
         <div class="header__logo">
           {% if template == 'page' %}
-            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a> / <span class="page__title">{{ page.title }}</span>
+            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a></span>
+          {% elsif template == 'cart' %}
+            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a></span>
           {% else %}
             <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
           {% endif %}
