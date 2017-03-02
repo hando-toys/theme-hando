@@ -1,0 +1,5 @@
+<svg id="loading__ring" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+	<defs><style>.cls-1{}.cls-2{}</style></defs>
+	<path class="cls-1" d="M36,12A24,24,0,1,0,60,36H59A23,23,0,1,1,36,13V12Z" transform="translate(-12 -12)"/>
+	<path class="cls-2" d="M36,60A24,24,0,1,0,12,36h1A23,23,0,1,1,36,59v1Z" transform="translate(-12 -12)"/>
+</svg>

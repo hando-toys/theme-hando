@@ -5,6 +5,10 @@ $(document).ready(function(){
 		$(this).toggleClass('active');
 		$('.header__drawer').toggleClass('visible');
 	});
+
+	$('.header').click(function(){
+	  isInspectOpen();
+	});
 });
 
 window.onresize = function(event) {
@@ -15,3 +19,15 @@ function resizeDiv() {
 	vph = $(window).height();
 	$('.height--fixed').height(vph);
 }
+
+function isInspectOpen()
+{
+    console.profile(); 
+    console.profileEnd(); 
+    if (console.clear) console.clear();
+    return console.profiles.length > 0;
+}
+
+$(window).load(function() {
+	$('body').removeClass('preloading');
+});

@@ -68,7 +68,17 @@
             <span class="field__value">{{ product.metafields.c_f.ages }}</span>
           </p>
 
+        </div>
 
+      </div>
+    </div>
+
+    <div class="product__bar">
+      <div class="wrapper">
+        <div class="bar__nav">
+
+        </div>
+        <div class="bar__actions">
           <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="product__form">
 
             {% for variant in product.variants %}
@@ -89,7 +99,6 @@
             {% endfor %}
 
             <div class="product__qty">
-              <span class="h4">{{ 'products.product.quantity' | t }}</span>
               <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector qty__input">
             </div>
 
@@ -99,9 +108,9 @@
 
           </form>
         </div>
-
       </div>
     </div>
+
   </div>
 
   <div class="product__extended">
@@ -145,7 +154,7 @@
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector qty__input">
       </div>
 
-      <button type="submit" name="add" id="AddToCart" class="btn">
+      <button type="submit" name="add" id="AddToCart" class="btn--bar">
         <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
       </button>
 

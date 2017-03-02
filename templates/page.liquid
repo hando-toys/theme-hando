@@ -1,13 +1,16 @@
 <!-- /templates/page.liquid -->
 <div class="page">
 
+	<div class="page__image">&nbsp;</div>
+
 	<div class="wrapper">
 
-    	<figure></figure>
-    	<article class="rte">
+    	<div class="rte page__content">
     		{{ page.content }}
-    	</article>
+    	</div>
 
     </div>
+
+	{% include 'loading', style: 'white' %}
 
 </div>

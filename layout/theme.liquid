@@ -50,7 +50,24 @@
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if template == 'page' %} preloading{% endif %} hero--left" >
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: "1163199097047119",
+        xfbml: true,
+        version: "v2.6"
+      });
+    };
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) { return; }
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
   <div id="NavDrawer" class="drawer drawer--left">
     <a href="/collections/all" class="drawer__label h4">Shop</a>
@@ -74,7 +91,7 @@
   {% endif %}
 
   <div id="PageContainer" class="is-moved-by-drawer">
-    <header class="header{% if template == 'index' or template == 'product' %} header--fixed{% endif %}" role="banner">
+    <header class="header{% if template == 'index' or template == 'product' or template == 'product.beta' %} header--fixed{% endif %}" role="banner">
       <div class="wrapper">
 
         <div class="header__menu">
@@ -93,9 +110,9 @@
 
         <div class="header__logo">
           {% if template == 'page' %}
-            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a></span>
+            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a><span class="page__title">/ {{ page_title }}</span>
           {% elsif template == 'cart' %}
-            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a></span>
+            <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
           {% else %}
             <a href="/" itemprop="url" class="hando__logo" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
           {% endif %}
@@ -134,7 +151,7 @@
 
     </main>
 
-    <!-- begin site-footer -->
+    {% if template != 'cart' %}
     <footer class="footer{% if template == 'index' %} footer--fixed{% endif %}" role="contentinfo">
       <div class="wrapper">
 
@@ -188,11 +205,13 @@
             </div>
           {% endif %}
 
-          <label class="footer__label">Sign up for updates</label>
+          <label class="footer__label">{{ 'general.newsletter_form.social' | t }}</label>
 
           <div class="footer__social">
             {% for link in linklists.social.links %}
-            <a href="{{ link.url }}" class="social__icn social__icn--{{ link.title | downcase }}"></a>
+            <a href="{{ link.url }}" class="social__icn social__icn--{{ link.title | downcase }}">
+              
+            </a>
             {% endfor %}
           </div>
 
@@ -200,6 +219,15 @@
 
         <div class="footer__menu footer__menu--right">
           <ul class="list list--h4">
+            <li class="footer__support">
+                <span>Message Us</span>  
+                <div class="fb-messengermessageus" 
+                  messenger_app_id="1163199097047119" 
+                  page_id="1043849475742730"
+                  color="white"
+                  size="standard" >
+                </div> 
+            </li>
             {% for link in linklists.footer-contact.links %}
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {% endfor %}
@@ -208,65 +236,7 @@
 
       </div>
     </footer>
-
-
-
-
-
-
-        <!--<div class="grid">
-          {% if settings.footer_social_enable %}
-            <div class="grid__item large--one-third medium--one-half">
-              <h3>{{ 'layout.footer.social_title' | t }}</h3>
-                <ul class="inline-list social-icons">
-                  {% if settings.social_twitter_link != blank %}
-                    <li>
-                      <a class="icon-fallback-text" href="{{ settings.social_twitter_link }}" title="{{ shop.name }} on Twitter">
-                        <span class="icon icon-twitter" aria-hidden="true"></span>
-                        <span class="fallback-text">Twitter</span>
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_facebook_link != blank %}
-                    <li>
-                      <a class="icon-fallback-text" href="{{ settings.social_facebook_link }}" title="{{ shop.name }} on Facebook">
-                        <span class="icon icon-facebook" aria-hidden="true"></span>
-                        <span class="fallback-text">Facebook</span>
-                      </a>
-                    </li>
-                  {% endif %}
-                </ul>
-            </div>
-          {% endif %}
-          
-          <div class="grid__item text-center">
-            <hr>
-            {% comment %}
-              Loop through available payment methods and show their icons.
-            {% endcomment %}
-            {% unless shop.enabled_payment_types == empty %}
-              {% assign payment_icons_available = 'amazon_payments,american_express,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' %}
-              <h4 class="text-center">{{ 'layout.footer.accepted_payments' | t }}</h4>
-              <ul class="inline-list payment-icons">
-                {% for type in shop.enabled_payment_types %}
-                  {% if payment_icons_available contains type %}
-                    <li>
-                      <span class="icon-fallback-text">
-                        <span class="icon icon-{{type}}" aria-hidden="true"></span>
-                        <span class="fallback-text">{{ type | replace: '_',' '}}</span>
-                      </span>
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            {% endunless %}
-          </div>
-        </div>
-      </div>-->
-
-    </footer>
-    <!-- //site-footer -->
-  </div>
+    {% endif %}
 
   {{ 'fastclick.min.js' | asset_url | script_tag }}
   {{ 'timber.js' | asset_url | script_tag }}

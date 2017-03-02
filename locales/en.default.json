@@ -13,7 +13,8 @@
       "home_link_title": "Back to the home page"
     },
     "newsletter_form": {
-      "newsletter_email": "email@example.com",
+      "newsletter_email": "What's your email address?",
+      "social": "Follow for updates",
       "submit": "Subscribe",
       "confirmation": "Thanks for subscribing"
     },
@@ -59,7 +60,7 @@
       "remove": "Remove",
       "note": "Special instructions for seller",
       "subtotal": "Subtotal",
-      "shipping_at_checkout": "Shipping & taxes calculated at checkout",
+      "shipping_at_checkout": "Shipping and taxes calculated at checkout.",
       "update": "Update Cart",
       "checkout": "Check Out",
       "empty": "Your cart is currently empty.",
@@ -72,7 +73,7 @@
     "label": {
       "product": "Product",
       "price": "Price",
-      "quantity": "Quantity",
+      "quantity": "Qty",
       "total": "Total"
     }
   },
@@ -272,7 +273,7 @@
       "regular_price": "Regular price"
     },
     "product": {
-      "sold_out": "Sold Out",
+      "sold_out": "Currently Sold Out",
       "on_sale": "On Sale",
       "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
       "unavailable": "Unavailable",
